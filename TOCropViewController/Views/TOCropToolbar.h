@@ -71,5 +71,5 @@
 /* Done button frame for popover controllers */
 @property (nonatomic, readonly) CGRect doneButtonFrame;
 
-- (instancetype) initWith:(NSString*)language;
+- (instancetype _Nullable) initWith:(NSString * _Nonnull)language;
 @end

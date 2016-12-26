@@ -52,7 +52,14 @@
 @end
 
 @implementation TOCropToolbar
-
+- (instancetype)initWith:( NSString * _Nonnull )language {
+    if (self = [super initWithFrame: CGRectZero]) {
+        _localizedLanguage = language;
+        [self setup];
+    }
+    
+    return self;
+}
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
@@ -78,13 +85,15 @@
     // In CocoaPods, strings are stored in a separate bundle from the main one
     NSBundle *resourceBundle = nil;
     NSBundle *classBundle = [NSBundle bundleForClass:[self class]];
-    NSURL *resourceBundleURL = [classBundle URLForResource:@"TOCropViewControllerBundle" withExtension:@"bundle"];
+    NSString *path = [@"languages.bundle" stringByAppendingPathComponent:_localizedLanguage];
+    NSURL *resourceBundleURL = [classBundle URLForResource:path withExtension:@"lproj"];
     if (resourceBundleURL) {
         resourceBundle = [[NSBundle alloc] initWithURL:resourceBundleURL];
     }
     else {
         resourceBundle = classBundle;
     }
+    
     
     _doneTextButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_doneTextButton setTitle:NSLocalizedStringFromTableInBundle(@"Done",

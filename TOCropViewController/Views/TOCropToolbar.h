@@ -23,7 +23,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TOCropToolbar : UIView
-
+/**
+ Language
+ */
+@property (nonnull, nonatomic, copy) NSString *localizedLanguage;
 /* In horizontal mode, offsets all of the buttons vertically by 20 points. */
 @property (nonatomic, assign) BOOL statusBarVisible;
 
@@ -68,5 +71,5 @@
 /* Done button frame for popover controllers */
 @property (nonatomic, readonly) CGRect doneButtonFrame;
 
-
+- (instancetype) initWith:(NSString*)language;
 @end

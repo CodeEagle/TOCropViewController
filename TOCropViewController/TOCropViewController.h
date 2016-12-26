@@ -93,7 +93,10 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerToolbarPosition) {
 @end
 
 @interface TOCropViewController : UIViewController
-
+/**
+ Language
+ */
+@property (nonnull, nonatomic, copy) NSString *localizedLanguage;
 /**
  The original, uncropped image that was passed to this controller.
  */

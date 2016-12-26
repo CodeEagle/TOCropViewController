@@ -88,6 +88,7 @@
         _aspectRatioPreset = TOCropViewControllerAspectRatioPresetOriginal;
         _toolbarPosition = TOCropViewControllerToolbarPositionBottom;
         _rotateClockwiseButtonHidden = YES;
+        _localizedLanguage = @"zh-Hans";
     }
     
     return self;
@@ -404,7 +405,8 @@
     // In CocoaPods, strings are stored in a separate bundle from the main one
     NSBundle *resourceBundle = nil;
     NSBundle *classBundle = [NSBundle bundleForClass:[self class]];
-    NSURL *resourceBundleURL = [classBundle URLForResource:@"TOCropViewControllerBundle" withExtension:@"bundle"];
+    NSString *path = [@"languages.bundle" stringByAppendingPathComponent:_localizedLanguage];
+    NSURL *resourceBundleURL = [classBundle URLForResource:path withExtension:@"lproj"];
     if (resourceBundleURL) {
         resourceBundle = [[NSBundle alloc] initWithURL:resourceBundleURL];
     }
@@ -817,7 +819,7 @@
 
 - (TOCropToolbar *)toolbar {
     if (!_toolbar) {
-        _toolbar = [[TOCropToolbar alloc] initWithFrame:CGRectZero];
+        _toolbar = [[TOCropToolbar alloc] initWith:_localizedLanguage];
     }
     return _toolbar;
 }
